@@ -83,66 +83,29 @@ def depthFirstSearch(problem):
     To get started, you might want to try some of these simple commands to
     understand the search problem that is being passed in:
     """
-    # print "Start:", problem.getStartState()
-    # print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    # print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    # print type(problem.getSuccessors(problem.getStartState())[0])
-    # print "(1,1) is Goal?:", problem.isGoalState((1,1))
-    # print "End Successors:", problem.getSuccessors((1,1))
-    # print "(1,2) is Goal?:", problem.isGoalState((1,2))
-    # print "Successors:", problem.getSuccessors((1,2))
-    # print '\n'
+    print "Start:", problem.getStartState()
+    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
+    print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    print type(problem.getSuccessors(problem.getStartState())[0])
+    print "(1,1) is Goal?:", problem.isGoalState((1,1))
+    print "End Successors:", problem.getSuccessors((1,1))
+    print "(1,2) is Goal?:", problem.isGoalState((1,2))
+    print "Successors:", problem.getSuccessors((1,2))
+    print '\n'
     "*** YOUR CODE HERE ***"
     # command: 
     #   python pacman.py -l tinyMaze -p SearchAgent --frameTime 0.2
     #   python pacman.py -l mediumMaze -p SearchAgent --frameTime 0.15 -a fn=dfs
     #   python pacman.py -l bigMaze -z .5 -p SearchAgent --frameTime 0.1 -z 0.5
 
-    dfsSearchStack = util.Stack()
-    visitedList = []
-    dfsSearchStack.push( (problem.getStartState(), []) )
-    visitedList.append( problem.getStartState() )
-
-    while dfsSearchStack.isEmpty() == 0:
-        state, actions = dfsSearchStack.pop()
-
-        for next in problem.getSuccessors(state):
-            n_state = next[0]
-            n_direction = next[1]
-            if n_state not in visitedList:
-                if problem.isGoalState(n_state):
-                    #print 'Find Goal'
-                    return actions + [n_direction]
-                else:
-                    dfsSearchStack.push( (n_state, actions + [n_direction]) )
-                    visitedList.append( n_state )
-
-    #util.raiseNotDefined()
+    util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     #python pacman.py -l mediumMaze -p SearchAgent -a fn=bfs --frameTime 0
     #python pacman.py -l bigMaze -p SearchAgent -a fn=bfs -z .5 --frameTime 0
     "*** YOUR CODE HERE ***"
-    bfsSearchQueue = util.Queue()
-    visitedList = []
-    bfsSearchQueue.push( (problem.getStartState(), []) )
-    visitedList.append( problem.getStartState() )
-
-    while bfsSearchQueue.isEmpty() == 0:
-        state, actions = bfsSearchQueue.pop()
-
-        for next in problem.getSuccessors(state):
-            n_state = next[0]
-            n_direction = next[1]
-            if n_state not in visitedList:
-                if problem.isGoalState(n_state):
-                    #print 'Find Goal'
-                    return actions + [n_direction]
-                else:
-                    bfsSearchQueue.push( (n_state, actions + [n_direction]) )
-                    visitedList.append( n_state )
-
+    
     util.raiseNotDefined()
 
 def uniformCostSearch(problem):
